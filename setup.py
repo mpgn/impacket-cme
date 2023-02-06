@@ -17,7 +17,7 @@ import platform
 from setuptools import setup
 from subprocess import *
 
-PACKAGE_NAME = "impacket"
+PACKAGE_NAME = "impacket-cme"
 
 VER_MAJOR = 0
 VER_MINOR = 10
@@ -39,12 +39,6 @@ try:
 except Exception:
     VER_LOCAL = ""
 
-if platform.system() != 'Darwin':
-    data_files = [(os.path.join('share', 'doc', PACKAGE_NAME), ['README.md', 'LICENSE']+glob.glob('doc/*'))]
-else:
-    data_files = []
-
-
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
@@ -60,13 +54,8 @@ setup(
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     platforms=["Unix", "Windows"],
-    packages=['impacket', 'impacket.dcerpc', 'impacket.examples', 'impacket.dcerpc.v5', 'impacket.dcerpc.v5.dcom',
-              'impacket.krb5', 'impacket.ldap', 'impacket.examples.ntlmrelayx',
-              'impacket.examples.ntlmrelayx.clients', 'impacket.examples.ntlmrelayx.servers',
-              'impacket.examples.ntlmrelayx.servers.socksplugins', 'impacket.examples.ntlmrelayx.utils',
-              'impacket.examples.ntlmrelayx.attacks', 'impacket.examples.ntlmrelayx.attacks.httpattacks'],
-    scripts=glob.glob(os.path.join('examples', '*.py')),
-    data_files=data_files,
+    packages=['impacket', 'impacket.dcerpc', 'impacket.dcerpc.v5', 'impacket.dcerpc.v5.dcom',
+              'impacket.krb5', 'impacket.ldap'],
     install_requires=['pyasn1>=0.2.3', 'pycryptodomex', 'pyOpenSSL>=21.0.0', 'six', 'ldap3>=2.5,!=2.5.2,!=2.5.0,!=2.6',
                       'ldapdomaindump>=0.9.0', 'flask>=1.0', 'future', 'charset_normalizer', 'dsinternals'],
     extras_require={'pyreadline:sys_platform=="win32"': [],
