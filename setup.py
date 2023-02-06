@@ -17,7 +17,7 @@ import platform
 from setuptools import setup
 from subprocess import *
 
-PACKAGE_NAME = "impacket-cme"
+PACKAGE_NAME = "impacket"
 
 VER_MAJOR = 0
 VER_MINOR = 10
